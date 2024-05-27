@@ -16,10 +16,11 @@ jobs:
       run: |
         sudo apt-get -y purge unattended-upgrades
         sudo apt-get -y update
-        sudo apt-get -y install bison flex devscripts debhelper-compat libbsd-dev dh-package-notes
+        sudo apt-get -y install bison flex devscripts debhelper-compat libbsd-dev dh-package-notes dh-sequence-movetousr
     - name: Enable src repos
       run: |
-        sed -i 's/^Types: deb$/Types: deb deb-src/' /etc/apt/sources.list
+        sudo sed -i 's/^Types: deb$/Types: deb deb-src/' /etc/apt/sources.list
+        sudo sed -i 's/^Types: deb/Types: deb deb-src/' /etc/apt/sources.list.d/ubuntu.sources
         cat /etc/apt/sources.list
         cat /etc/apt/sources.list.d/ubuntu.sources
         sudo apt update
