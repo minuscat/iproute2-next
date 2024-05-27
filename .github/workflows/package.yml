@@ -23,7 +23,7 @@ jobs:
         sudo apt update
     - name: Import debian rules
       run: |
-        git remote add debian $(debcheckout -d iproute2 | awk '/url/{print $2;}')
+        git remote add debian https://salsa.debian.org/debian/iproute2.git
         git fetch debian
         git checkout debian/$(git describe --tags | tr -d 'v')-1 -- debian
         sudo apt build-dep iproute2
