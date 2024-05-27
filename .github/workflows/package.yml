@@ -19,7 +19,9 @@ jobs:
         sudo apt-get -y install bison flex devscripts debhelper-compat libbsd-dev dh-package-notes
     - name: Enable src repos
       run: |
-        sed -i 's/^Types: deb$/Types: deb deb-src/' /etc/apt/sources.list.d/ubuntu.sources
+        sed -i 's/^Types: deb$/Types: deb deb-src/' /etc/apt/sources.list
+        cat /etc/apt/sources.list
+        cat /etc/apt/sources.list.d/ubuntu.sources
         sudo apt update
     - name: Import debian rules
       run: |
